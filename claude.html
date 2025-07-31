@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peter Wahome Maina | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-main: #10b981;
+      --green-1: #059669;
+      --green-2: #047857;
+      --green-3: #065f46;
+      --blue-main: #3b82f6;
+      --blue-1: #2563eb;
+      --blue-2: #1d4ed8;
+      --white: #ffffff;
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.12);
+      --shadow-intense: 0 20px 60px rgba(0, 0, 0, 0.3);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --glow-green: 0 0 40px rgba(16, 185, 129, 0.4);
+      --glow-blue: 0 0 40px rgba(59, 130, 246, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: linear-gradient(135deg, var(--green-main) 0%, var(--blue-main) 50%, #8b5cf6 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: var(--white);
+      line-height: 1.7;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating particles background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+      background-size: 60px 60px, 40px 40px;
+      animation: float 20s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-100px) rotate(360deg); }
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem 3rem 2rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-intense);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shimmer 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      margin: 0 0 1rem 0;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--white) 0%, rgba(255, 255, 255, 0.8) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    header p {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 500;
+      margin: 0 0 2.5rem 0;
+      opacity: 0.95;
+      letter-spacing: 0.5px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1rem 2rem;
+      border-radius: var(--radius);
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.5px;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    nav a:hover {
+      transform: translateY(-4px) scale(1.05);
+      background: linear-gradient(135deg, var(--green-1), var(--blue-1));
+      box-shadow: var(--glow-green), var(--shadow-intense);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    nav a:hover::before {
+      left: 100%;
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      margin: 4rem 0;
+      padding: 3rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-intense);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    }
+
+    section:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-intense), 0 0 60px rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      margin: 0 0 2rem 0;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green-main), var(--blue-main));
+      border-radius: 2px;
+      box-shadow: var(--glow-green);
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin: 0 0 1.5rem 0;
+      font-weight: 400;
+      opacity: 0.95;
+    }
+
+    .projects, .certs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      padding: 2rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-soft);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green-main), var(--blue-main));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow-intense), var(--glow-blue);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:nth-child(odd):hover {
+      box-shadow: var(--shadow-intense), var(--glow-green);
+    }
+
+    #contact {
+      text-align: center;
+    }
+
+    #contact p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin: 1rem 0;
+      padding: 1rem 2rem;
+      background: var(--glass-bg);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--glass-border);
+      display: inline-block;
+      min-width: 300px;
+      transition: all 0.3s ease;
+    }
+
+    #contact p:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: var(--glow-green);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-intense);
+      margin-top: 4rem;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      section {
+        margin: 2rem 0;
+        padding: 2rem 1.5rem;
+      }
+
+      .projects, .certs {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      nav {
+        gap: 1rem;
+      }
+
+      nav a {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      main {
+        padding: 0 1rem;
+      }
+    }
+
+    /* Scroll animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, var(--green-main), var(--blue-main));
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, var(--green-1), var(--blue-1));
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Peter Wahome Maina</h1>
+    <p>Passionate Techie • Data Analyst • Software Developer</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="fade-in">
+      <h2>About Me</h2>
+      <p>I am a collaborative professional passionate about solving complex problems in tech. I build responsive web and mobile applications, analyze data to extract meaningful insights, and create impactful software solutions that drive business growth.</p>
+      <p>With expertise spanning frontend development, data analytics, and full-stack engineering, I bring ideas to life through clean code, intuitive design, and data-driven decision making.</p>
+    </section>
+
+    <section id="projects" class="fade-in">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="card">
+          <strong>HyperWrites</strong><br>
+          Freelance Writing Platform<br>
+          <em>PHP • MySQL • REST API</em>
+        </div>
+        <div class="card">
+          <strong>Wardrobe Management</strong><br>
+          Smart Closet Organization<br>
+          <em>Vue.js 3 • Laravel • PWA</em>
+        </div>
+        <div class="card">
+          <strong>Progress Tracker</strong><br>
+          Personal Development Dashboard<br>
+          <em>Laravel • Progressive Web App</em>
+        </div>
+        <div class="card">
+          <strong>Obituary Platform</strong><br>
+          Memorial Web Application<br>
+          <em>SEO Optimized • Social Media</em>
+        </div>
+        <div class="card">
+          <strong>Supply Chain ERP</strong><br>
+          Enterprise Resource Planning<br>
+          <em>PHP • MySQL • CSS Grid</em>
+        </div>
+        <div class="card">
+          <strong>ONLYPANS</strong><br>
+          Recipe & Cooking Management<br>
+          <em>Mobile-First Design</em>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" class="fade-in">
+      <h2>Certifications</h2>
+      <div class="certs">
+        <div class="card">
+          <strong>Frontend Development</strong><br>
+          Advanced UI/UX Implementation
+        </div>
+        <div class="card">
+          <strong>Database Management</strong><br>
+          SQL & NoSQL Optimization
+        </div>
+        <div class="card">
+          <strong>Data Analytics</strong><br>
+          Python • Machine Learning
+        </div>
+        <div class="card">
+          <strong>Software Engineering</strong><br>
+          Architecture & Best Practices
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+      <h2>Let's Connect</h2>
+      <p>📧 peterwahomemaina003@gmail.com</p>
+      <p>📱 +254794797796</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Peter Wahome Maina • Crafted with passion and precision</p>
+  </footer>
+
+  <script>
+    // Enhanced scroll animations
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Dynamic card hover effects
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseenter', (e) => {
+        const rect = e.target.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
+      });
+    });
+
+    // Add subtle parallax effect to background
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const background = document.body;
+      background.style.transform = `translateY(${scrolled * 0.1}px)`;
+    });
+
+    // Initialize animations on load
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</body>
+</html>

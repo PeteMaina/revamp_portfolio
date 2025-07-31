@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peter Wahome Maina | Elite Software Engineering Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&family=Verdana:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Enhanced color palette with better contrast and vibrancy */
+      --green-main: #27AE60; /* Slightly richer green */
+      --green-1: #2ECC71;
+      --green-2: #28B463;
+      --green-3: #1F8B50;
+      --blue-main: #2980B9; /* Deeper blue */
+      --blue-1: #3498DB;
+      --blue-2: #21618C;
+      --white: #ECF0F1; /* Soft white for readability */
+      --dark-overlay: rgba(26, 35, 47, 0.95); /* Darker, almost opaque for sections */
+      --header-bg: rgba(26, 35, 47, 0.9); /* Header background */
+      --shadow-heavy: 8px 16px 20px rgba(0, 0, 0, 0.6); /* More pronounced shadow */
+      --radius-large: 15px; /* Larger border-radius */
+      --font-original: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Original font stack */
+      --font-heading: 'Segoe UI', 'Verdana', sans-serif; /* Slightly more defined heading font */
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-original);
+      background: linear-gradient(to bottom right, var(--green-main) 0%, var(--blue-main) 100%); /* Smoother, diagonal gradient */
+      color: var(--white);
+      line-height: 1.8; /* Improved readability */
+      scroll-behavior: smooth;
+      overflow-x: hidden; /* Prevent horizontal scroll on animations */
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background-color: var(--header-bg);
+      box-shadow: var(--shadow-heavy);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom-left-radius: var(--radius-large);
+      border-bottom-right-radius: var(--radius-large);
+      animation: fadeInDown 1s ease-out; /* Header animation */
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 3.8em; /* Bolder, bigger look */
+      margin-bottom: 0.8rem;
+      color: var(--white);
+      text-shadow: 3px 4px 6px rgba(0,0,0,0.5); /* Stronger text shadow */
+      letter-spacing: 1.5px;
+    }
+
+    header p {
+      font-size: 1.4em; /* Bolder look */
+      color: var(--white);
+      font-weight: 300;
+      margin-top: 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700; /* Bolder nav links */
+      padding: 0.9rem 1.8rem;
+      border-radius: var(--radius-large); /* Restored and enhanced radius */
+      background-color: var(--green-2);
+      transition: background 0.4s ease-in-out, transform 0.3s ease-out, box-shadow 0.4s ease;
+      box-shadow: 4px 8px 12px rgba(0,0,0,0.4); /* Restored and enhanced shadow */
+      font-size: 1.1em;
+      border: 2px solid var(--green-3); /* Subtle border for definition */
+    }
+
+    nav a:hover {
+      background-color: var(--blue-1);
+      transform: translateY(-5px) scale(1.03); /* More pronounced lift and slight scale */
+      box-shadow: 6px 12px 18px rgba(0,0,0,0.6);
+      border-color: var(--blue-2);
+    }
+
+    nav a:focus-visible {
+      outline: 4px solid var(--white);
+      outline-offset: 4px;
+      border-radius: var(--radius-large);
+    }
+
+    section {
+      margin: 3rem auto;
+      padding: 3rem;
+      background-color: var(--dark-overlay);
+      border-radius: var(--radius-large); /* Restored and enhanced radius */
+      box-shadow: var(--shadow-heavy); /* Restored and enhanced shadow */
+      max-width: 1000px;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+      border: 1px solid rgba(255,255,255,0.1); /* Subtle border */
+    }
+
+    section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      color: var(--white);
+      border-bottom: 4px solid var(--white);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      font-size: 2.8em; /* Bolder look */
+      text-shadow: 2px 3px 5px rgba(0,0,0,0.3);
+      letter-spacing: 1px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--header-bg);
+      box-shadow: var(--shadow-heavy);
+      margin-top: 4rem;
+      border-top-left-radius: var(--radius-large);
+      border-top-right-radius: var(--radius-large);
+    }
+
+    .projects-container, .certs-container {
+      /* Tabbed interface container */
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 1.5rem;
+      border-radius: var(--radius-large);
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.3); /* Inner shadow for depth */
+    }
+
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .tab-button {
+      background-color: var(--green-1);
+      color: var(--white);
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: var(--radius-large);
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 2px 4px 8px rgba(0,0,0,0.3);
+      flex-grow: 1; /* Allow buttons to grow */
+      max-width: 250px; /* Max width for buttons */
+    }
+
+    .tab-button:hover {
+      background-color: var(--blue-1);
+      transform: translateY(-2px);
+      box-shadow: 3px 6px 10px rgba(0,0,0,0.4);
+    }
+
+    .tab-button.active {
+      background-color: var(--blue-main);
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 0 15px var(--blue-1);
+      transform: scale(1.05);
+      border: 2px solid var(--white);
+    }
+
+    .tab-content {
+      display: none;
+      padding: 1rem;
+      animation: fadeIn 0.8s ease-out; /* Content fade in */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .project-card, .cert-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: var(--radius-large); /* Restored and enhanced radius */
+      box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.5); /* Restored and enhanced shadow */
+      margin-bottom: 2rem;
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden; /* For image positioning */
+      position: relative;
+    }
+
+    .project-card:hover, .cert-card:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 7px 14px 20px rgba(0,0,0,0.7);
+    }
+
+    .project-card h3, .cert-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.8em;
+      color: var(--green-1);
+      margin-top: 0;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      padding-bottom: 0.5rem;
+    }
+
+    .project-card p, .cert-card p {
+      font-size: 1.05em;
+      margin-bottom: 1rem;
+    }
+
+    .project-card ul, .cert-card ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .project-card li, .cert-card li {
+      background-color: var(--blue-2);
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9em;
+      font-weight: 600;
+      color: var(--white);
+      box-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 250px; /* Fixed height for consistency */
+      object-fit: cover; /* Cover ensures image fills the space */
+      border-radius: var(--radius-large);
+      margin-bottom: 1.5rem;
+      box-shadow: 3px 6px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease-out;
+    }
+
+    .project-image:hover {
+      transform: scale(1.02); /* Slight zoom on hover */
+    }
+
+    .contact-info a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: var(--green-1);
+      text-decoration: underline;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      h1 {
+        font-size: 3em;
+      }
+      header p {
+        font-size: 1.1em;
+      }
+      section {
+        margin: 2rem auto;
+        padding: 2rem;
+      }
+      h2 {
+        font-size: 2.2em;
+      }
+      .tab-button {
+        flex-grow: unset;
+        width: calc(50% - 1rem); /* Two buttons per row on smaller screens */
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5em;
+      }
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav a {
+        width: 90%;
+        margin: 0 auto;
+      }
+      section {
+        margin: 1.5rem;
+        padding: 1.5rem;
+      }
+      h2 {
+        font-size: 1.8em;
+      }
+      .tab-button {
+        width: 100%; /* Stack buttons on very small screens */
+      }
+      .project-card, .cert-card {
+        padding: 1.5rem;
+      }
+      .project-card h3, .cert-card h3 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Peter Wahome Maina</h1>
+    <p>Elite Software Engineer | Data Analyst | Full-Stack Developer</p>
+    <nav>
+      <a href="#about" role="button">About</a>
+      <a href="#projects" role="button">Projects</a>
+      <a href="#certifications" role="button">Certifications</a>
+      <a href="#contact" role="button">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>As a highly driven and collaborative professional, I thrive on solving complex technical challenges through innovative software solutions. My expertise spans building robust, scalable web and mobile applications, performing in-depth data analysis to derive actionable insights, and designing efficient, impactful software systems from conception to deployment.</p>
+    <p>My journey in software engineering is fueled by a passion for continuous learning and a commitment to delivering high-quality, performant, and user-centric products. I excel in agile environments, working closely with cross-functional teams to translate intricate requirements into elegant code. I am proficient in various programming paradigms and eager to embrace new technologies to push the boundaries of what's possible in the tech landscape.</p>
+    <p>I specialize in full-stack development with a strong emphasis on clean architecture, test-driven development, and maintainable codebases. My data analysis skills allow me to not only build systems but also understand the implications of the data they generate, leading to more intelligent and data-driven solutions.</p>
+  </section>
+
+  <section id="projects">
+    <h2>My Elite Projects</h2>
+    <div class="projects-container">
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="hyperwrites">HyperWrites</button>
+        <button class="tab-button" data-tab="wardrobe">Wardrobe Mgmt</button>
+        <button class="tab-button" data-tab="tracker">Progress Tracker</button>
+        <button class="tab-button" data-tab="obituary">Obituary App</button>
+        <button class="tab-button" data-tab="erp">Supply Chain ERP</button>
+        <button class="tab-button" data-tab="onlypans">ONLYPANS</button>
+      </div>
+
+      <div id="hyperwrites" class="tab-content active">
+        <div class="project-card">
+          <img src="https://via.placeholder.com/600x250/27AE60/FFFFFF?text=HyperWrites+Platform" alt="HyperWrites Project" class="project-image">
+          <h3>HyperWrites - Freelance Writing Platform</h3>
+          <p>Developed a comprehensive, scalable freelance writing platform from scratch, connecting clients with skilled writers. This platform streamlined content creation workflows, from order placement and project management to secure payment processing and client-writer communication.</p>
+          <h4>Key Features:</h4>
+          <ul>
+            <li>Secure User Authentication & Authorization (Writer/Client roles)</li>
+            <li>Real-time Order Management & Tracking</li>
+            <li>Integrated Messaging System</li>
+            <li>Automated Payment Gateway Integration</li>
+            <li>Content Submission & Review Workflow</li>
+            <li>Responsive UI/UX for Desktop & Mobile</li>
+          </ul>
+          <h4>Technologies Used:</h4>
+          <ul>
+            <li>Backend: PHP (Laravel Framework for RESTful API)</li>
+            <li>Database: MySQL (Optimized for high-volume transactions)</li>
+            <li>Frontend: HTML5, CSS3, JavaScript (Vanilla JS for interactive elements)</li>
+            <li>Deployment: AWS EC2 (Scalability & Reliability)</li>
+            <li>Version Control: Git/GitHub</li>
+          </ul>
+          <p><strong>Impact:</strong> Significantly reduced manual overhead for content agencies, improving content delivery speed by 30% and client satisfaction by centralizing operations. Scalable architecture supported rapid user growth.</p>
+        </div>
+      </div>
+
+      <div id="wardrobe" class="tab-content">
+        <div class="project-card">
+          <img src="https://via.placeholder.com/600x250/2980B9/FFFFFF?text=Wardrobe+Management" alt="Wardrobe Management System" class="project-image">
+          <h3>Wardrobe Management System</h3>
+          <p>Designed and built a modern web application for personal wardrobe management, allowing users to catalog clothing items, create outfits, and plan their attire based on weather and events. This system provided a digital solution to fashion organization.</p>
+          <h4>Key Features:</h4>
+          <ul>
+            <li>Item Cataloging (with image upload and metadata)</li>
+            <li>Outfit Creation & Management</li>
+            <li>Event-based Outfit Planning</li>
+            <li>Weather API Integration for Suggestions</li>
+            <li>Search & Filter Functionality</li>
+            <li>User Profiles & Preferences</li>
+          </ul>
+          <h4>Technologies Used:</h4>
+          <ul>
+            <li>Frontend: Vue.js 3 (Composition API for reactive UI)</li>
+            <li>Backend: Laravel (PHP for robust API endpoints)</li>
+            <li>Database: PostgreSQL</li>
+            <li>Styling: Tailwind CSS (for rapid, utility-first styling)</li>
+            <li>Deployment: Vercel (Frontend), DigitalOcean (Backend)</li>
+          </ul>
+          <p><strong>Impact:</strong> Empowered users to digitize their fashion inventory, leading to more informed styling choices and reduced time spent on daily outfit selection. Enhanced user engagement through intuitive design.</p>
+        </div>
+      </div>
+
+      <div id="tracker" class="tab-content">
+        <div class="project-card">
+          <img src="https://via.placeholder.com/600x250/1F8B50/FFFFFF?text=Progress+Tracker+PWA" alt="Personal Progress Tracker PWA" class="project-image">
+          <h3>Personal Progress Tracker (Laravel PWA)</h3>
+          <p>A Progressive Web Application (PWA) built with Laravel, enabling users to track personal goals, habits, and overall progress across various aspects of their life. This app offered offline capabilities and a native-app-like experience.</p>
+          <h4>Key Features:</h4>
+          <ul>
+            <li>Goal Setting & Tracking (SMART goals)</li>
+            <li>Habit Management & Streaks</li>
+            <li>Data Visualization (Charts for progress)</li>
+            <li>Offline Sync Capabilities</li>
+            <li>Push Notifications for Reminders</li>
+            <li>Responsive & Installable PWA</li>
+          </ul>
+          <h4>Technologies Used:</h4>
+          <ul>
+            <li>Backend: Laravel (API for data management)</li>
+            <li>Frontend: HTML5, CSS3, JavaScript (Service Workers for PWA features)</li>
+            <li>Database: SQLite (for lightweight local storage)</li>
+            <li>Charting Library: Chart.js</li>
+            <li>Deployment: Firebase Hosting (for PWA)</li>
+          </ul>
+          <p><strong>Impact:</strong> Provided users with a powerful, accessible tool for self-improvement and accountability, fostering consistent engagement through its installable and offline-first design.</p>
+        </div>
+      </div>
+
+      <div id="obituary" class="tab-content">
+        <div class="project-card">
+          <img src="https://via.placeholder.com/600x250/21618C/FFFFFF?text=Obituary+Web+App" alt="Obituary Web App" class="project-image">
+          <h3>Obituary Web App (SEO & SMO Optimized)</h3>
+          <p>Developed a dignified and user-friendly web application for publishing obituaries, focusing heavily on Search Engine Optimization (SEO) and Social Media Optimization (SMO) to ensure high visibility and easy sharing during difficult times.</p>
+          <h4>Key Features:</h4>
+          <ul>
+            <li>Dynamic Obituary Creation & Publishing</li>
+            <li>Image & Media Upload</li>
+            <li>Condolence Book Functionality</li>
+            <li>SEO Best Practices (Meta Tags, Schema Markup)</li>
+            <li>SMO Integration (Open Graph, Twitter Cards)</li>
+            <li>Admin Panel for Content Moderation</li>
+          </ul>
+          <h4>Technologies Used:</h4>
+          <ul>
+            <li>Backend: Node.js (Express.js for API)</li>
+            <li>Frontend: EJS (Templating Engine)</li>
+            <li>Database: MongoDB (NoSQL for flexible data structure)</li>
+            <li>Image Hosting: Cloudinary</li>
+            <li>SEO/SMO Tools: Google Analytics, Yoast SEO concepts</li>
+          </ul>
+          <p><strong>Impact:</strong> Provided a compassionate and highly discoverable platform for communities to share tributes, ensuring vital information reached a wide audience efficiently and respectfully.</p>
+        </div>
+      </div>
+
+      <div id="erp" class="tab-content">
+        <div class="project-card">
+          <img src="https://via.placeholder.com/600x250/28B463/FFFFFF?text=Supply+Chain+ERP" alt="Supply Chain ERP" class="project-image">
+          <h3>Supply Chain ERP (PHP, CSS)</h3>
+          <p>Contributed to and enhanced a robust Enterprise Resource Planning (ERP) system tailored for supply chain management. This system optimized inventory tracking, order fulfillment, vendor management, and logistics operations.</p>
+          <h4>Key Features:</h4>
+          <ul>
+            <li>Inventory Management with Stock Alerts</li>
+            <li>Order Processing & Fulfillment Modules</li>
+            <li>Supplier & Vendor Relationship Management</li>
+            <li>Reporting & Analytics Dashboards</li>
+            <li>User Role & Permissions System</li>
+            <li>Barcode Scanning Integration (Conceptual)</li>
+          </ul>
+          <h4>Technologies Used:</h4>
+          <ul>
+            <li>Backend: PHP (Custom MVC Framework)</li>
+            <li>Database: MySQL</li>
+            <li>Frontend: HTML5, CSS3 (Custom, highly optimized CSS for performance)</li>
+            <li>JavaScript: jQuery (for dynamic UI elements)</li>
+            <li>Version Control: SVN (Subversion)</li>
+          </ul>
+          <p><strong>Impact:</strong> Significantly improved operational efficiency for businesses by centralizing supply chain data, leading to reduced stockouts, optimized delivery times, and better decision-making.</p>
+        </div>
+      </div>
+
+      <div id="onlypans" class="tab-content">
+        <div class="project-card">
+          <img src="https://via.placeholder.com/600x250/27AE60/FFFFFF?text=ONLYPANS+Cooking+App" alt="ONLYPANS Cooking App" class="project-image">
+          <h3>ONLYPANS - Cooking App</h3>
+          <p>A fun and intuitive cooking application designed to help users discover new recipes, manage ingredients, and plan meals. The app focused on simplifying the cooking process and fostering culinary creativity.</p>
+          <h4>Key Features:</h4>
+          <ul>
+            <li>Recipe Discovery & Search (by ingredient, cuisine, dietary need)</li>
+            <li>Personalized Recipe Collections</li>
+            <li>Ingredient Inventory Management</li>
+            <li>Meal Planning & Shopping List Generation</li>
+            <li>Cooking Instructions & Timers</li>
+            <li>User Contributions & Ratings</li>
+          </ul>
+          <h4>Technologies Used:</h4>
+          <ul>
+            <li>Frontend: React (for dynamic, component-based UI)</li>
+            <li>Backend: Python (Flask for lightweight API)</li>
+            <li>Database: MongoDB (for flexible recipe data)</li>
+            <li>API Integration: External Recipe APIs (e.g., Spoonacular)</li>
+            <li>Deployment: Heroku</li>
+          </ul>
+          <p><strong>Impact:</strong> Transformed the home cooking experience by making meal preparation more accessible and enjoyable, inspiring users to experiment with new dishes and reduce food waste.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2>My Certifications & Expertise</h2>
+    <div class="certs-container">
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="frontend-cert">Frontend Dev</button>
+        <button class="tab-button" data-tab="database-cert">Database Mgmt</button>
+        <button class="tab-button" data-tab="data-analytics-cert">Data Analytics</button>
+        <button class="tab-button" data-tab="se-fundamentals-cert">SE Fundamentals</button>
+      </div>
+
+      <div id="frontend-cert" class="tab-content active">
+        <div class="cert-card">
+          <h3>Frontend Development Masterclass</h3>
+          <p><strong>Issuing Body:</strong> Advanced Web Academy</p>
+          <p><strong>Focus:</strong> This certification validates deep proficiency in modern frontend technologies, emphasizing responsive design, performance optimization, and robust user experience. It covers best practices for building interactive and scalable web interfaces.</p>
+          <h4>Skills Demonstrated:</h4>
+          <ul>
+            <li>HTML5 Semantic Structure</li>
+            <li>Advanced CSS3 (Flexbox, Grid, Animations, Responsive Design)</li>
+            <li>JavaScript ES6+ (DOM Manipulation, Asynchronous Programming)</li>
+            <li>Frameworks: React.js, Vue.js</li>
+            <li>State Management (Redux, Vuex)</li>
+            <li>Build Tools: Webpack, Vite</li>
+            <li>Cross-Browser Compatibility</li>
+            <li>Accessibility (ARIA, Semantic HTML)</li>
+            <li>Performance Optimization (Lazy Loading, Image Optimization)</li>
+          </ul>
+          <p><strong>Competency:</strong> Expert in crafting pixel-perfect, highly performant, and accessible user interfaces that provide exceptional user experiences across all devices.</p>
+        </div>
+      </div>
+
+      <div id="database-cert" class="tab-content">
+        <div class="cert-card">
+          <h3>Advanced Database Management & Design</h3>
+          <p><strong>Issuing Body:</strong> Global Data Solutions Institute</p>
+          <p><strong>Focus:</strong> Comprehensive training in designing, implementing, and optimizing relational and NoSQL databases. This certification highlights expertise in data modeling, query optimization, database security, and ensuring data integrity and availability.</p>
+          <h4>Skills Demonstrated:</h4>
+          <ul>
+            <li>SQL (Complex Queries, Joins, Stored Procedures, Triggers)</li>
+            <li>Database Normalization & Denormalization</li>
+            <li>Database Security Best Practices</li>
+            <li>Performance Tuning & Indexing</li>
+            <li>Backup & Recovery Strategies</li>
+            <li>NoSQL Databases (MongoDB, Redis)</li>
+            <li>Data Migration & ETL Processes</li>
+            <li>Database Administration</li>
+          </ul>
+          <p><strong>Competency:</strong> Proficient in architecting robust, secure, and highly efficient database solutions capable of handling large datasets and complex transactional requirements.</p>
+        </div>
+      </div>
+
+      <div id="data-analytics-cert" class="tab-content">
+        <div class="cert-card">
+          <h3>Data Analytics with Python Mastery</h3>
+          <p><strong>Issuing Body:</strong> Elite Analytics Academy</p>
+          <p><strong>Focus:</strong> This certification validates strong analytical skills using Python for data manipulation, statistical analysis, machine learning fundamentals, and data visualization. It emphasizes deriving actionable insights from raw data to support strategic decision-making.</p>
+          <h4>Skills Demonstrated:</h4>
+          <ul>
+            <li>Python Programming (Pandas, NumPy)</li>
+            <li>Data Cleaning & Preprocessing</li>
+            <li>Exploratory Data Analysis (EDA)</li>
+            <li>Statistical Analysis & Hypothesis Testing</li>
+            <li>Machine Learning Fundamentals (Scikit-learn)</li>
+            <li>Data Visualization (Matplotlib, Seaborn, Plotly)</li>
+            <li>Dashboard Creation (Jupyter Notebooks, Streamlit)</li>
+            <li>Regression, Classification, Clustering</li>
+          </ul>
+          <p><strong>Competency:</strong> Capable of transforming complex datasets into clear, compelling narratives and actionable recommendations, driving data-informed business strategies.</p>
+        </div>
+      </div>
+
+      <div id="se-fundamentals-cert" class="tab-content">
+        <div class="cert-card">
+          <h3>Software Engineering Fundamentals & Best Practices</h3>
+          <p><strong>Issuing Body:</strong> Institute of Modern Software Development</p>
+          <p><strong>Focus:</strong> A deep dive into core software engineering principles, methodologies, and architectural patterns. This certification covers the entire software development life cycle (SDLC), emphasizing efficient, scalable, and maintainable software construction.</p>
+          <h4>Skills Demonstrated:</h4>
+          <ul>
+            <li>Object-Oriented Programming (OOP)</li>
+            <li>Design Patterns (MVC, Singleton, Factory)</li>
+            <li>Algorithm Design & Analysis</li>
+            <li>Data Structures</li>
+            <li>Test-Driven Development (TDD)</li>
+            <li>Agile Methodologies (Scrum, Kanban)</li>
+            <li>Version Control Systems (Git, GitHub Flow)</li>
+            <li>Code Review & Refactoring Techniques</li>
+            <li>System Design & Scalability</li>
+          </ul>
+          <p><strong>Competency:</strong> Master of foundational software engineering concepts, enabling the development of high-quality, robust, and maintainable software systems that adhere to industry best practices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-info">
+    <h2>Contact Peter Wahome Maina</h2>
+    <p>I am always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!</p>
+    <p><strong>Email:</strong> <a href="mailto:peterwahomemaina003@gmail.com">peterwahomemaina003@gmail.com</a></p>
+    <p><strong>Phone:</strong> <a href="tel:+254794797796">+254794797796</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/peterwahomemaina" target="_blank" rel="noopener noreferrer">linkedin.com/in/peterwahomemaina</a> (Hypothetical Link)</p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/peterwahomemaina" target="_blank" rel="noopener noreferrer">github.com/peterwahomemaina</a> (Hypothetical Link)</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Peter Wahome Maina | Elite Software Engineering Portfolio</p>
+  </footer>
+
+  <script>
+    // Intersection Observer for section animations
+    const sections = document.querySelectorAll('section');
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1 /* Trigger when 10% of the section is visible */
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(sec => {
+      observer.observe(sec);
+    });
+
+    // Tabbed interface logic for Projects and Certifications
+    function setupTabs(containerSelector) {
+      const container = document.querySelector(containerSelector);
+      if (!container) return;
+
+      const tabButtons = container.querySelectorAll('.tab-button');
+      const tabContents = container.querySelectorAll('.tab-content');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Deactivate all buttons and hide all content
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          tabContents.forEach(content => content.classList.remove('active'));
+
+          // Activate clicked button
+          button.classList.add('active');
+
+          // Show corresponding content
+          const targetTabId = button.dataset.tab;
+          const targetContent = document.getElementById(targetTabId);
+          if (targetContent) {
+            targetContent.classList.add('active');
+          }
+        });
+      });
+
+      // Initialize with the first tab active if no other is specified
+      if (tabButtons.length > 0 && !container.querySelector('.tab-button.active')) {
+        tabButtons[0].click();
+      }
+    }
+
+    // Initialize tabs for both sections
+    setupTabs('.projects-container');
+    setupTabs('.certs-container');
+  </script>
+</body>
+</html>

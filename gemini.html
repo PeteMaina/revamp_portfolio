@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peter Wahome Maina | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-main: #2ECC71; /* Brighter Green */
+      --green-1: #27AE60;
+      --green-2: #229954;
+      --green-3: #1E8449;
+      --blue-main: #3498DB; /* Brighter Blue */
+      --blue-1: #2980B9;
+      --blue-2: #2471A3;
+      --white: #ECF0F1; /* Off-white for softer look */
+      --dark-bg: rgba(44, 62, 80, 0.9); /* Darker, slightly transparent for sections */
+      --shadow: 6px 12px 12px rgba(0, 0, 0, 0.4); /* Slightly larger shadow */
+      --radius: 12px; /* Slightly larger border-radius */
+      --font-primary: 'Montserrat', sans-serif;
+      --font-secondary: 'Roboto', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-secondary);
+      background: linear-gradient(to right, var(--green-main), var(--blue-main));
+      color: var(--white);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 2rem;
+      background-color: rgba(0, 0, 0, 0.4); /* Slightly darker overlay */
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    h1 {
+      font-family: var(--font-primary);
+      font-size: 3em;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: var(--white);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap; /* Allow navigation items to wrap */
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius);
+      background-color: var(--green-2);
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+    }
+
+    nav a:hover {
+      background-color: var(--blue-1);
+      transform: translateY(-3px);
+      box-shadow: 3px 6px 9px rgba(0,0,0,0.4);
+    }
+
+    nav a:focus-visible { /* Accessibility: Focus indicator */
+      outline: 3px solid var(--white);
+      outline-offset: 2px;
+    }
+
+    section {
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: var(--dark-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 900px;
+      opacity: 0; /* Initial state for animation */
+      transform: translateY(30px); /* Initial state for animation */
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    section.is-visible { /* Class added by JS for animation */
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-family: var(--font-primary);
+      color: var(--white);
+      border-bottom: 3px solid var(--white);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 2em;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: rgba(0, 0, 0, 0.4);
+      box-shadow: var(--shadow);
+      margin-top: 3rem;
+    }
+
+    .certs, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Larger min-width for cards */
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.15); /* Slightly less transparent */
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-weight: 400;
+      color: var(--white); /* Ensure good contrast */
+    }
+
+    .card:hover {
+      background-color: rgba(255, 255, 255, 0.25); /* More distinct hover */
+      transform: translateY(-5px); /* Lift effect */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5em;
+      }
+      header p {
+        font-size: 1em;
+      }
+      nav a {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9em;
+      }
+      section {
+        margin: 1.5rem auto;
+        padding: 1.5rem;
+      }
+      h2 {
+        font-size: 1.8em;
+      }
+      .certs, .projects {
+        grid-template-columns: 1fr; /* Stack cards on very small screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2em;
+      }
+      nav {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      nav a {
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Peter Wahome Maina</h1>
+    <p>Passionate Techie | Data Analyst | Software Developer</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a collaborative professional passionate about solving complex problems in tech. I build responsive web and mobile apps, analyze data, and create impactful software solutions.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">HyperWrites - Freelance Writing Platform (PHP, MySQL)</div>
+      <div class="card">Wardrobe Management System (Vue3 + Laravel)</div>
+      <div class="card">Personal Progress Tracker (Laravel PWA)</div>
+      <div class="card">Obituary Web App (SEO & SMO)</div>
+      <div class="card">Supply Chain ERP (PHP, CSS)</div>
+      <div class="card">ONLYPANS - Cooking App</div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="certs">
+      <div class="card">Frontend Development</div>
+      <div class="card">Database Management</div>
+      <div class="card">Data Analytics (Python)</div>
+      <div class="card">Software Engineering Fundamentals</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:peterwahomemaina003@gmail.com" style="color: var(--white); text-decoration: underline;">peterwahomemaina003@gmail.com</a></p>
+    <p>Phone: <a href="tel:+254794797796" style="color: var(--white); text-decoration: underline;">+254794797796</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Peter Wahome Maina</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2 /* Trigger when 20% of the section is visible */
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target); /* Stop observing once animated */
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(sec => {
+      observer.observe(sec);
+    });
+  </script>
+</body>
+</html>
